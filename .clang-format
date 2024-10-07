@@ -1,0 +1,8 @@
+BasedOnStyle: LLVM
+ColumnLimit: 120
+DerivePointerAlignment: false
+PointerAlignment: Left
+QualifierAlignment: Left
+ReferenceAlignment: Left
+SeparateDefinitionBlocks: Always
+AllowShortFunctionsOnASingleLine: None
