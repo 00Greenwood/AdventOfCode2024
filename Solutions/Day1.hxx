@@ -1,10 +1,10 @@
 #pragma once
 #include <Day.hxx>
 
-class Day0 : public Day {
+class Day1 : public Day {
 public:
-  explicit Day0();
-  virtual ~Day0() = default;
+  explicit Day1();
+  virtual ~Day1() = default;
 
   std::string solve(Part) const override;
 };

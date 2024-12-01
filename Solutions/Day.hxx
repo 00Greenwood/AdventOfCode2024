@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 // Bass class for the Days.
