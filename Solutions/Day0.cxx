@@ -8,5 +8,7 @@ Day0::~Day0() {
 }
 
 std::string Day0::solve(Part part) const {
-  return std::to_string(parse<int>(name()));
+  int input;
+  parse(name(), input);
+  return std::to_string(input);
 }

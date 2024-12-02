@@ -2,12 +2,10 @@
 #include <string>
 #include <vector>
 
-template <class T> T parse(std::string name);
+void parse(std::string name, std::string&);
 
-template <> std::string parse(std::string name);
+void parse(std::string name, int&);
 
-template <> int parse(std::string name);
+void parse(std::string name, std::pair<std::vector<int>, std::vector<int>>&);
 
-template <> std::pair<std::vector<int>, std::vector<int>> parse(std::string name);
-
-template <> std::vector<std::vector<int>> parse(std::string name);
+void parse(std::string name, std::vector<std::vector<int>>&);

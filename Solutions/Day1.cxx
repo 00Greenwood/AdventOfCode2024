@@ -11,18 +11,19 @@ Day1::~Day1() {
 }
 
 std::string Day1::solve(Part part) const {
-  auto [first, second] = parse<std::pair<std::vector<int>, std::vector<int>>>(name());
+  std::pair<std::vector<int>, std::vector<int>> input;
+  parse(name(), input);
   if (part == Day::PART_1) {
-    std::sort(first.begin(), first.end());
-    std::sort(second.begin(), second.end());
+    std::sort(input.first.begin(), input.first.end());
+    std::sort(input.second.begin(), input.second.end());
     int difference = 0;
-    for (int i = 0; i < first.size(); ++i) {
-      difference += std::abs(first.at(i) - second.at(i));
+    for (int i = 0; i < input.first.size(); ++i) {
+      difference += std::abs(input.first.at(i) - input.second.at(i));
     }
     return std::to_string(difference);
   } else {
     std::map<int, int> occurences;
-    for (const auto& number : first) {
+    for (const auto& number : input.first) {
       if (occurences.count(number) > 0) {
         occurences.at(number)++;
       } else {
@@ -30,7 +31,7 @@ std::string Day1::solve(Part part) const {
       }
     }
     int score = 0;
-    for (const auto& number : second) {
+    for (const auto& number : input.second) {
       if (occurences.count(number) > 0) {
         score += occurences.at(number) * number;
       }
