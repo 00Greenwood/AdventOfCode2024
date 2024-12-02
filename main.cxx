@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
   days.push_back(std::make_unique<Day1>());
 
   for (const auto& day : days) {
-    std::cout << day->name() << ": " << day->solve(Day::PART_1) << " - " << day->solve(Day::PART_2) << std::endl;
+    std::cout << day->solution() << std::endl;
   }
 
   return 0;

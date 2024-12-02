@@ -7,6 +7,9 @@
 Day1::Day1() : Day(1) {
 }
 
+Day1::~Day1() {
+}
+
 std::string Day1::solve(Part part) const {
   auto [first, second] = parse<std::pair<std::vector<int>, std::vector<int>>>(name());
   if (part == Day::PART_1) {
