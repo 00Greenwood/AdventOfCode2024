@@ -28,3 +28,20 @@ template <> std::pair<std::vector<int>, std::vector<int>> parse(std::string name
   }
   return output;
 }
+
+template <> std::vector<std::vector<int>> parse(std::string name) {
+  std::string input = parse<std::string>(name);
+  std::stringstream ss(input);
+  std::regex numberRegex("\\d+");
+  std::vector<std::vector<int>> output;
+  std::string line;
+  while (std::getline(ss, line, '\n')) {
+    std::vector<int> subOutput;
+    auto it = std::sregex_iterator(line.begin(), line.end(), numberRegex);
+    while (it != std::sregex_iterator()) {
+      subOutput.push_back(std::stoi(it++->str()));
+    }
+    output.push_back(subOutput);
+  }
+  return output;
+}

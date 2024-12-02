@@ -52,6 +52,15 @@
         "filesystem": "cpp",
         "fstream": "cpp",
         "strstream": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "regex": "cpp",
+        "bitset": "cpp",
+        "map": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "condition_variable": "cpp",
+        "mutex": "cpp",
+        "future": "cpp"
     }
 }
