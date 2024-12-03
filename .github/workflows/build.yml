@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Clang Format Github Action
+    - name: Clang Format
       # Check the code satisfies clang-format
       uses: RafikFarhad/clang-format-github-action@v4
 
