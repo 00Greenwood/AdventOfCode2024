@@ -18,6 +18,11 @@ cmake ..
 # Build
 
 ```
-cd Build
 cmake --build .
+```
+
+# Run
+
+```
+./AdventOfCode2024
 ```
