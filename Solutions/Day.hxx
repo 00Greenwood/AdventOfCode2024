@@ -13,10 +13,10 @@ public:
   // Wait and return the solution in a nice format.
   std::string solution();
 
-protected:
   // Solve the day and store the solution in the promise.
   void solve();
 
+protected:
   enum Part { PART_1, PART_2 };
 
   // Solve the Day for a specific part.

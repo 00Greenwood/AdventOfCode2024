@@ -4,7 +4,6 @@
 #include <sstream>
 
 Day::Day(int day) : m_day(std::to_string(day)) {
-  solve();
 }
 
 Day::~Day() {
