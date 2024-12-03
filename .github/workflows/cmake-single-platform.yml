@@ -31,7 +31,3 @@ jobs:
       # Build your program with the given configuration.
       run: cmake --build ${{github.workspace}}/Build --config ${{env.BUILD_TYPE}}
 
-    - name: Run
-      # Run the executable.
-      run: ${{github.workspace}}/Build/AdventOfCode2024
-
