@@ -45,3 +45,17 @@ void parse(std::string name, std::vector<std::vector<int>>& output) {
     output.push_back(subOutput);
   }
 }
+
+void parse(std::string name, std::vector<std::vector<char>>& output) {
+  std::string input;
+  parse(name, input);
+  std::stringstream ss(input);
+  std::string line;
+  while (std::getline(ss, line, '\n')) {
+    std::vector<char> subOutput;
+    for (const auto& ch : line) {
+      subOutput.push_back(ch);
+    }
+    output.push_back(subOutput);
+  }
+}

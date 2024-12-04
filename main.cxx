@@ -2,6 +2,7 @@
 #include <Day1.hxx>
 #include <Day2.hxx>
 #include <Day3.hxx>
+#include <Day4.hxx>
 
 #include <iostream>
 #include <memory>
@@ -13,6 +14,7 @@ int main(int argc, char** argv) {
   days.push_back(std::make_unique<Day1>());
   days.push_back(std::make_unique<Day2>());
   days.push_back(std::make_unique<Day3>());
+  days.push_back(std::make_unique<Day4>());
 
   for (const auto& day : days) {
     day->solve();
