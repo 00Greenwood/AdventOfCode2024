@@ -20,6 +20,7 @@ std::string Day::solution() {
 void Day::solve() {
   const auto run = [this]() -> std::string {
     auto start = std::chrono::steady_clock::now();
+    initialize();
     std::stringstream ss;
     ss << "Day " << m_day << ":";
     ss << "\n\tPart 1: " << solve(Day::PART_1);

@@ -9,12 +9,14 @@ Day3::Day3() : Day(3) {
 Day3::~Day3() {
 }
 
+void Day3::initialize() {
+  parse(name(), m_input);
+}
+
 std::string Day3::solve(Part part) const {
-  std::string input;
-  parse(name(), input);
   std::regex numbersRegex("\\d+");
   std::regex equationRegex("mul\\(\\d+,\\d+\\)|don't\\(\\)|do\\(\\)");
-  auto it = std::sregex_iterator(input.begin(), input.end(), equationRegex);
+  auto it = std::sregex_iterator(m_input.begin(), m_input.end(), equationRegex);
   int total = 0;
   bool enabled = true;
   while (it != std::sregex_iterator()) {

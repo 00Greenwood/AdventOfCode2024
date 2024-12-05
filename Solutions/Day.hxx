@@ -19,6 +19,9 @@ public:
 protected:
   enum Part { PART_1, PART_2 };
 
+  // Called before solving both parts.
+  virtual void initialize() = 0;
+
   // Solve the Day for a specific part.
   virtual std::string solve(Part) const = 0;
 

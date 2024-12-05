@@ -10,11 +10,13 @@ Day2::Day2() : Day(2) {
 Day2::~Day2() {
 }
 
+void Day2::initialize() {
+  parse(name(), m_input);
+}
+
 std::string Day2::solve(Part part) const {
-  std::vector<std::vector<int>> input;
-  parse(name(), input);
   int safeReports = 0;
-  for (const auto& report : input) {
+  for (const auto& report : m_input) {
     if (isReportSafe(report)) {
       safeReports++;
     } else if (part == PART_2) {
