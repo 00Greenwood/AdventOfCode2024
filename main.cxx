@@ -19,7 +19,12 @@ int main(int argc, char** argv) {
   }
 
   for (const auto& day : days) {
-    std::cout << day->solution() << std::endl;
+      try {
+        std::cout << day->solution() << std::endl;
+      }
+      catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+      }
   }
 
   return 0;

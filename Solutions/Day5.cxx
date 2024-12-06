@@ -2,6 +2,7 @@
 #include <parse.hxx>
 
 #include <regex>
+#include <sstream>
 
 Day5::Day5() : Day(5) {
 }

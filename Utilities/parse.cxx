@@ -7,7 +7,11 @@
 
 void parse(std::string name, std::string& output) {
   std::filesystem::path inputDir(INPUTS_DIR);
-  std::ifstream ifs(inputDir / (name + ".txt"));
+  std::filesystem::path filePath = inputDir / (name + ".txt");
+  if (!std::filesystem::exists(filePath)) {
+    throw std::runtime_error("File not found: " + filePath.string());
+  }
+  std::ifstream ifs(filePath);
   std::stringstream ss;
   ss << ifs.rdbuf();
   output = ss.str();
