@@ -23,8 +23,7 @@ void Day6::initialize() {
 std::string Day6::solve(Part part) const {
   const std::vector<Position> directions{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
   auto inBounds = [this](const Position& position) -> bool {
-    return position.x >= 0 && position.y >= 0 && position.x < m_input.size() &&
-           position.y < m_input.size();
+    return position.x >= 0 && position.y >= 0 && position.x < m_input.size() && position.y < m_input.size();
   };
   std::unordered_set<Position, PositionHash> positions;
   std::unordered_set<PositionAndDirection, PositionAndDirectionHash> walk;

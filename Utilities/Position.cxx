@@ -2,21 +2,21 @@
 
 #include <functional>
 
-  bool Position::operator == (const Position& other) const {
+bool Position::operator==(const Position& other) const {
   return x == other.x && y == other.y;
-  }
+}
 
-  Position& Position::operator+=(const Position& other) {
+Position& Position::operator+=(const Position& other) {
   x += other.x;
   y += other.y;
   return *this;
-  }
+}
 
-    Position& Position::operator-=(const Position& other) {
+Position& Position::operator-=(const Position& other) {
   x -= other.x;
   y -= other.y;
   return *this;
-  }
+}
 
 size_t PositionHash::operator()(const Position& position) const {
   auto hash1 = std::hash<int>{}(position.x);
