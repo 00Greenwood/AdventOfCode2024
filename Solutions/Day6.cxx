@@ -26,7 +26,6 @@ std::string Day6::solve(Part part) const {
     return position.x >= 0 && position.y >= 0 && position.x < m_input.size() && position.y < m_input.size();
   };
   std::unordered_set<Position, PositionHash> positions;
-  std::unordered_set<PositionAndDirection, PositionAndDirectionHash> walk;
 
   {
     int direction = 0;
@@ -38,7 +37,6 @@ std::string Day6::solve(Part part) const {
         direction = (direction + 1) % 4;
       } else {
         positions.insert(current);
-        walk.insert({current, direction});
       }
       current += directions.at(direction);
     }
@@ -49,7 +47,7 @@ std::string Day6::solve(Part part) const {
   }
 
   std::unordered_set<Position, PositionHash> obstructions;
-  for (const auto& [position, direction] : walk) {
+  for (const auto& position : positions) {
     if (position == m_start) {
       continue;
     }
