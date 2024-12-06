@@ -1,6 +1,8 @@
 add_library(Utilities 
     parse.hxx
     parse.cxx
+    Position.hxx
+    Position.cxx
 )
 
 target_include_directories(Utilities PRIVATE .)

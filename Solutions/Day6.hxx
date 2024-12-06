@@ -1,8 +1,8 @@
 #pragma once
 #include <Day.hxx>
+#include <Position.hxx>
 
-#include <set>
-#include <utility>
+#include <unordered_set>
 #include <vector>
 
 class Day6 : public Day {
@@ -15,6 +15,7 @@ protected:
   std::string solve(Part) const override;
 
   std::vector<std::vector<char>> m_input;
-  std::pair<int, int> m_start;
-  std::set<std::pair<int, int>> m_walls;
+  Position m_start;
+
+  std::unordered_set<Position, PositionHash> m_walls;
 };
