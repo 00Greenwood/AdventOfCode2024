@@ -11,8 +11,6 @@ void Day7::initialize() {
   parse(name(), m_input);
 }
 
-#include <iostream>
-
 std::string Day7::solve(Part part) const {
   size_t calibration = 0;
   for (const auto& equation : m_input) {
