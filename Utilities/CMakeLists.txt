@@ -3,6 +3,9 @@ add_library(Utilities
     parse.cxx
     Position.hxx
     Position.cxx
+    PositionAndDirection.hxx
+    PositionAndDirection.cxx
+    Direction.hxx
 )
 
 target_include_directories(Utilities PRIVATE .)

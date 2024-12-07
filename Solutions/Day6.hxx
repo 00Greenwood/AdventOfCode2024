@@ -2,7 +2,7 @@
 #include <Day.hxx>
 #include <Position.hxx>
 
-#include <unordered_set>
+#include <set>
 #include <vector>
 
 class Day6 : public Day {
@@ -17,5 +17,5 @@ protected:
   std::vector<std::vector<char>> m_input;
   Position m_start;
 
-  std::unordered_set<Position, PositionHash> m_walls;
+  std::set<Position> m_walls;
 };

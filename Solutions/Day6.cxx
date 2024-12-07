@@ -1,4 +1,5 @@
 #include <Day6.hxx>
+#include <Direction.hxx>
 #include <parse.hxx>
 
 Day6::Day6() : Day(6) {
@@ -21,24 +22,23 @@ void Day6::initialize() {
 }
 
 std::string Day6::solve(Part part) const {
-  const std::vector<Position> directions{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
   auto inBounds = [this](const Position& position) -> bool {
     return position.x >= 0 && position.y >= 0 && position.x < m_input.size() && position.y < m_input.size();
   };
-  std::unordered_set<Position, PositionHash> positions;
+  std::set<Position> positions;
 
   {
-    int direction = 0;
+    Direction direction = UP;
     Position current = m_start;
     while (inBounds(current)) {
       if (m_walls.contains(current)) {
         // Hit a wall, move back one space, rotate and continue.
-        current -= directions.at(direction);
-        direction = (direction + 1) % 4;
+        current -= DIRECTIONS[direction];
+        direction = static_cast<Direction>((direction + 1) % 4);
       } else {
         positions.insert(current);
       }
-      current += directions.at(direction);
+      current += DIRECTIONS[direction];
     }
   }
 
@@ -46,30 +46,32 @@ std::string Day6::solve(Part part) const {
     return std::to_string(positions.size());
   }
 
-  std::unordered_set<Position, PositionHash> obstructions;
+  std::set<Position> obstructions;
   for (const auto& position : positions) {
     if (position == m_start) {
       continue;
     }
-    std::unordered_set<PositionAndDirection, PositionAndDirectionHash> loop;
     // Save time by starting just before the new obstruction.
     Position current = m_start;
     int direction = 0;
 
+    int walkLength = 0;
     while (inBounds(current)) {
-      if (loop.contains({current, direction})) {
+      if (walkLength > 2 * positions.size()) {
+        // If the walk length is greater than twice the number of positions in the previous loop, chances are we must be
+        // in a loop.
         obstructions.insert(position);
         break;
       }
 
       if (m_walls.contains(current) || current == position) {
         // Hit a wall, move back one space, rotate and continue.
-        current -= directions.at(direction);
-        direction = (direction + 1) % 4;
+        current -= DIRECTIONS[direction];
+        direction = static_cast<Direction>((direction + 1) % 4);
       } else {
-        loop.insert({current, direction});
+        walkLength++;
       }
-      current += directions.at(direction);
+      current += DIRECTIONS[direction];
     }
   }
 
