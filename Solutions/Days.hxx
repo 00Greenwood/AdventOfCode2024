@@ -6,3 +6,4 @@
 #include <Day4.hxx>
 #include <Day5.hxx>
 #include <Day6.hxx>
+#include <Day7.hxx>

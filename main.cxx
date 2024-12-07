@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
   days.push_back(std::make_unique<Day3>());
   days.push_back(std::make_unique<Day4>());
   days.push_back(std::make_unique<Day5>());
+  days.push_back(std::make_unique<Day7>());
   days.push_back(std::make_unique<Day6>());
 
   for (const auto& day : days) {

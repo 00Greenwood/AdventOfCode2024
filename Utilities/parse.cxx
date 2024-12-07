@@ -50,6 +50,22 @@ void parse(std::string name, std::vector<std::vector<int>>& output) {
   }
 }
 
+void parse(std::string name, std::vector<std::vector<size_t>>& output) {
+  std::string input;
+  parse(name, input);
+  std::stringstream ss(input);
+  std::regex numberRegex("\\d+");
+  std::string line;
+  while (std::getline(ss, line, '\n')) {
+    std::vector<size_t> subOutput;
+    auto it = std::sregex_iterator(line.begin(), line.end(), numberRegex);
+    while (it != std::sregex_iterator()) {
+      subOutput.push_back(std::stoull(it++->str()));
+    }
+    output.push_back(subOutput);
+  }
+}
+
 void parse(std::string name, std::vector<std::vector<char>>& output) {
   std::string input;
   parse(name, input);
