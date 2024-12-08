@@ -9,5 +9,8 @@ struct Position {
   Position& operator+=(const Position&);
   Position& operator-=(const Position&);
 
+  Position operator+(const Position& other) const;
+  Position operator-(const Position& other) const;
+
   bool operator<(const Position& other) const;
 };
