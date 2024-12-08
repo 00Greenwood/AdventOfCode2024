@@ -10,11 +10,11 @@ public:
 
   std::string name() const;
 
-  // Wait and return the solution in a nice format.
-  std::string solution();
+  // Wait for the solution to be ready..
+  void wait();
 
   // Solve the day and store the solution in the promise.
-  void solve();
+  void solve(const std::shared_ptr<std::mutex>& mutex);
 
 protected:
   enum Part { PART_1, PART_2 };
@@ -27,5 +27,5 @@ protected:
 
   std::string m_day;
 
-  std::future<std::string> m_solution;
+  std::future<void> m_wait;
 };

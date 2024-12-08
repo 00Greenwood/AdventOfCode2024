@@ -12,7 +12,7 @@ Solution to Advent of Code 2024 in C++.
 ```
 mkdir Build
 cd Build
-cmake ..
+cmake -DCMAKE_BUILD_TYPE=Release ..
 ```
 
 # Build
