@@ -50,6 +50,14 @@ void parse(std::string name, std::vector<std::vector<int>>& output) {
   }
 }
 
+void parse(std::string name, std::vector<int>& output) {
+  std::string input;
+  parse(name, input);
+  for (const auto& ch : input) {
+    output.push_back(ch - '0');
+  }
+}
+
 void parse(std::string name, std::vector<std::vector<size_t>>& output) {
   std::string input;
   parse(name, input);
