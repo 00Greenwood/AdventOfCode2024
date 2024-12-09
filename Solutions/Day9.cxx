@@ -44,7 +44,7 @@ std::string Day9::solve(Part part) const {
     }
   }
 
-  int total = 0;
+  size_t total = 0;
   for (int i = 0; i < reformattedLayout.size(); ++i) {
     total += i * reformattedLayout.at(i);
   }
