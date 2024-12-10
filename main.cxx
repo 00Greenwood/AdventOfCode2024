@@ -19,6 +19,7 @@ int main(int argc, char** argv) {
   days.push_back(std::make_unique<Day7>());
   days.push_back(std::make_unique<Day8>());
   days.push_back(std::make_unique<Day9>());
+  days.push_back(std::make_unique<Day10>());
 
   for (const auto& day : days) {
     day->solve(mutex);
