@@ -1,6 +1,8 @@
 #pragma once
 #include <Day.hxx>
+
 #include <list>
+#include <map>
 
 class Day11 : public Day {
 public:
@@ -10,6 +12,8 @@ public:
 protected:
   void initialize() override;
   std::string solve(Part) const override;
+
+  size_t blink(size_t stone, int index, std::map<std::pair<int, size_t>, size_t>& cache) const;
 
   std::list<size_t> m_input;
 };
