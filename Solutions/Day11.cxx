@@ -13,9 +13,6 @@ void Day11::initialize() {
   parse(name(), m_input);
 }
 
-#include <iostream>
-#include <sstream>
-
 std::string Day11::solve(Part part) const {
   std::map<std::pair<int, size_t>, size_t> cache;
   int blinks = part == PART_1 ? 25 : 75;
