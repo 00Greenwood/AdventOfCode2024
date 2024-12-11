@@ -18,7 +18,7 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 # Build
 
 ```
-cmake --build .
+cmake --build . --config=Release
 ```
 
 # Run

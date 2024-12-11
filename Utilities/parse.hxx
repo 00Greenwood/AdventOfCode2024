@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 #include <string>
 #include <vector>
 
@@ -12,6 +13,8 @@ void parse(std::string name, std::vector<std::vector<int>>&);
 
 void parse(std::string name, std::vector<int>&);
 
+void parse(std::string name, std::list<size_t>&);
+
 void parse(std::string name, std::vector<std::vector<size_t>>&);
 
-void parse(std::string name, std::vector<std::vector<char>>& output);
+void parse(std::string name, std::vector<std::vector<char>>&);
