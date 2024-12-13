@@ -2,9 +2,9 @@
 #include <Direction.hxx>
 #include <parse.hxx>
 
-#include <set>
 #include <map>
 #include <queue>
+#include <set>
 
 namespace {
 
@@ -17,7 +17,7 @@ struct Plot {
   std::shared_ptr<Group> group;
   std::map<Direction, Position> adjacent;
 };
-}
+} // namespace
 
 Day12::Day12() : Day(12) {
 }
