@@ -4,6 +4,7 @@
 #include <Day10.hxx>
 #include <Day11.hxx>
 #include <Day12.hxx>
+#include <Day13.hxx>
 #include <Day2.hxx>
 #include <Day3.hxx>
 #include <Day4.hxx>
@@ -12,4 +13,3 @@
 #include <Day7.hxx>
 #include <Day8.hxx>
 #include <Day9.hxx>
-#include <Day13.hxx>
