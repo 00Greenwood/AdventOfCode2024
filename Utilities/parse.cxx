@@ -68,6 +68,16 @@ void parse(std::string name, std::list<size_t>& output) {
   }
 }
 
+void parse(std::string name, std::vector<int64_t>& output) {
+  std::string input;
+  parse(name, input);
+  std::regex numberRegex("\\d+");
+  auto it = std::sregex_iterator(input.begin(), input.end(), numberRegex);
+  while (it != std::sregex_iterator()) {
+    output.push_back(std::stoi(it++->str()));
+  }
+}
+
 void parse(std::string name, std::vector<std::vector<size_t>>& output) {
   std::string input;
   parse(name, input);

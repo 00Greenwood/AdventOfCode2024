@@ -1,6 +1,8 @@
 #pragma once
 #include <Day.hxx>
 
+#include <vector>
+
 class Day13 : public Day {
 public:
   explicit Day13();
@@ -10,5 +12,12 @@ protected:
   void initialize() override;
   std::string solve(Part) const override;
 
-  int m_input;
+  struct ClawMachine {
+    std::pair<int64_t, int64_t> a;
+    std::pair<int64_t, int64_t> b;
+    std::pair<int64_t, int64_t> p;
+  };
+
+  std::vector<int64_t> m_input;
+  std::vector<ClawMachine> m_machines;
 };
