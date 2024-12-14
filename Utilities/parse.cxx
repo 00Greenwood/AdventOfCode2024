@@ -38,7 +38,7 @@ void parse(std::string name, std::vector<std::vector<int>>& output) {
   std::string input;
   parse(name, input);
   std::stringstream ss(input);
-  std::regex numberRegex("\\d+");
+  std::regex numberRegex("-*\\d+");
   std::string line;
   while (std::getline(ss, line, '\n')) {
     std::vector<int> subOutput;

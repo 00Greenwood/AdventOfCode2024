@@ -23,6 +23,7 @@ int main(int argc, char** argv) {
   days.push_back(std::make_unique<Day11>());
   days.push_back(std::make_unique<Day12>());
   days.push_back(std::make_unique<Day13>());
+  days.push_back(std::make_unique<Day14>());
 
   for (const auto& day : days) {
     day->solve(mutex);
