@@ -1,10 +1,7 @@
 #include <Day14.hxx>
 #include <parse.hxx>
 
-#include <iostream>
 #include <set>
-#include <sstream>
-#include <fstream>
 
 Day14::Day14() : Day(14) {
 }
@@ -71,7 +68,6 @@ std::string Day14::solve(Part part) const {
           locations.insert(robot.position);
         }
       }
-      
     }
     if (locations.size() > 350) {
       return std::to_string(time);

@@ -32,6 +32,8 @@ add_library(Solutions
     Day13.cxx
     Day14.hxx
     Day14.cxx
+    Day15.hxx
+    Day15.cxx
 )
 
 target_include_directories(Solutions PRIVATE     

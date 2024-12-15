@@ -33,8 +33,8 @@ Position Position::operator%(const Position& other) const {
 }
 
 bool Position::operator<(const Position& other) const {
-  if (x == other.x) {
-    return y < other.y;
+  if (y == other.y) {
+    return x < other.x;
   }
-  return x < other.x;
+  return y < other.y;
 }

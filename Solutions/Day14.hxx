@@ -18,5 +18,6 @@ protected:
     Position position;
     Position velocity;
   };
+
   std::vector<Robot> m_robots;
 };
