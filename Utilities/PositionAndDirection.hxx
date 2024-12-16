@@ -8,4 +8,6 @@ struct PositionAndDirection {
   Direction direction;
 
   bool operator==(const PositionAndDirection&) const;
+
+  bool operator<(const PositionAndDirection& other) const;
 };
