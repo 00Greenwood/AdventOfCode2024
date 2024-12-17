@@ -8,6 +8,7 @@
 #include <Day14.hxx>
 #include <Day15.hxx>
 #include <Day16.hxx>
+#include <Day17.hxx>
 #include <Day2.hxx>
 #include <Day3.hxx>
 #include <Day4.hxx>

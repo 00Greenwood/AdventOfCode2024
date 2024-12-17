@@ -64,7 +64,7 @@ void parse(std::string name, std::list<size_t>& output) {
   std::regex numberRegex("\\d+");
   auto it = std::sregex_iterator(input.begin(), input.end(), numberRegex);
   while (it != std::sregex_iterator()) {
-    output.push_back(std::stoul(it++->str()));
+    output.push_back(std::stoull(it++->str()));
   }
 }
 
