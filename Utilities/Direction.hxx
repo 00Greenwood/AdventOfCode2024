@@ -10,7 +10,6 @@ static Position DIRECTIONS[4] = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
 static std::map<Position, Direction> REVERSE_DIRECTIONS = {
     {{0, -1}, UP}, {{1, 0}, RIGHT}, {{0, 1}, DOWN}, {{-1, 0}, LEFT}};
 
-
 static Direction turn90(Direction direction) {
   return static_cast<Direction>((direction + 1) % 4);
 }
