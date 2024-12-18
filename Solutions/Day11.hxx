@@ -1,8 +1,4 @@
 #pragma once
-#include <Day.hxx>
-
-#include <list>
-#include <map>
 
 class Day11 : public Day {
 public:

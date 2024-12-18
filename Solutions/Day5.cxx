@@ -1,8 +1,4 @@
-#include <Day5.hxx>
-#include <parse.hxx>
-
-#include <regex>
-#include <sstream>
+#include "precompiled.hxx"
 
 Day5::Day5() : Day(5) {
 }

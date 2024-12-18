@@ -1,8 +1,4 @@
 #pragma once
-#include <Day.hxx>
-#include <Position.hxx>
-
-#include <vector>
 
 class Day18 : public Day {
 public:

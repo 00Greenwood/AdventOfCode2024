@@ -1,8 +1,4 @@
-#include <Day8.hxx>
-#include <Position.hxx>
-#include <parse.hxx>
-
-#include <set>
+#include "precompiled.hxx"
 
 Day8::Day8() : Day(8) {
 }

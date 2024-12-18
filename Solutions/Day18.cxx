@@ -1,11 +1,4 @@
-#include <Day18.hxx>
-#include <Direction.hxx>
-#include <parse.hxx>
-
-#include <map>
-#include <queue>
-#include <set>
-#include <sstream>
+#include "precompiled.hxx"
 
 Day18::Day18() : Day(18) {
 }

@@ -1,10 +1,4 @@
-#include <Day12.hxx>
-#include <Direction.hxx>
-#include <parse.hxx>
-
-#include <map>
-#include <queue>
-#include <set>
+#include "precompiled.hxx"
 
 namespace {
 

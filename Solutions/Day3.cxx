@@ -1,7 +1,4 @@
-#include <Day3.hxx>
-#include <parse.hxx>
-
-#include <regex>
+#include "precompiled.hxx"
 
 Day3::Day3() : Day(3) {
 }

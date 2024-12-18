@@ -1,11 +1,4 @@
-#include <Day17.hxx>
-#include <parse.hxx>
-
-#include <cmath>
-#include <iostream>
-#include <ranges>
-#include <set>
-#include <sstream>
+#include "precompiled.hxx"
 
 Day17::Day17() : Day(17) {
 }

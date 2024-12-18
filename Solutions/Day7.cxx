@@ -1,7 +1,4 @@
-#include <Day7.hxx>
-#include <parse.hxx>
-
-#include <cmath>
+#include "precompiled.hxx"
 
 Day7::Day7() : Day(7) {
 }

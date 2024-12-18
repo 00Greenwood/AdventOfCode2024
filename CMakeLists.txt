@@ -7,6 +7,8 @@ project(AdventOfCode2024)
 
 add_executable(AdventOfCode2024 main.cxx)
 
+target_precompile_headers(AdventOfCode2024 PRIVATE precompiled.hxx)
+
 target_include_directories(AdventOfCode2024 PUBLIC
     "${PROJECT_BINARY_DIR}"
     "${PROJECT_SOURCE_DIR}/Solutions"

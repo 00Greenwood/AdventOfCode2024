@@ -1,6 +1,4 @@
-#include <Day6.hxx>
-#include <Direction.hxx>
-#include <parse.hxx>
+#include "precompiled.hxx"
 
 Day6::Day6() : Day(6) {
 }

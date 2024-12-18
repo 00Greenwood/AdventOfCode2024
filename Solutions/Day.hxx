@@ -1,6 +1,4 @@
 #pragma once
-#include <future>
-#include <string>
 
 // Bass class for the Days.
 class Day {

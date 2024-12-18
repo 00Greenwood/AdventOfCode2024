@@ -1,5 +1,4 @@
 #pragma once
-#include <Day.hxx>
 
 class Day3 : public Day {
 public:

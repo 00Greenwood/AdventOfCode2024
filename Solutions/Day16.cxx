@@ -1,12 +1,4 @@
-#include <Day16.hxx>
-#include <PositionAndDirection.hxx>
-#include <parse.hxx>
-
-#include <queue>
-#include <set>
-
-#include <iostream>
-#include <sstream>
+#include "precompiled.hxx"
 
 Day16::Day16() : Day(16) {
 }

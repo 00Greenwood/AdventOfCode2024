@@ -1,7 +1,4 @@
-#include <Day14.hxx>
-#include <parse.hxx>
-
-#include <set>
+#include "precompiled.hxx"
 
 Day14::Day14() : Day(14) {
 }

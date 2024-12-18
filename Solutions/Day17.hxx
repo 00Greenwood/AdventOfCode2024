@@ -1,8 +1,4 @@
 #pragma once
-#include <Day.hxx>
-
-#include <list>
-#include <vector>
 
 class Day17 : public Day {
 public:

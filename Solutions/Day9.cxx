@@ -1,8 +1,4 @@
-#include <Day9.hxx>
-#include <parse.hxx>
-
-#include <algorithm>
-#include <ranges>
+#include "precompiled.hxx"
 
 Day9::Day9() : Day(9) {
 }

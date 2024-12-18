@@ -1,5 +1,4 @@
-add_library(Solutions 
-    Days.hxx    
+add_library(Solutions   
     Day.hxx
     Day.cxx
     Day0.hxx
@@ -41,6 +40,8 @@ add_library(Solutions
     Day18.hxx
     Day18.cxx
 )
+
+target_precompile_headers(Solutions PRIVATE precompiled.hxx)
 
 target_include_directories(Solutions PRIVATE     
     "${PROJECT_SOURCE_DIR}/Solutions"

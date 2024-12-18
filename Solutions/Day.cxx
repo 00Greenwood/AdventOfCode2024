@@ -1,8 +1,4 @@
-#include <Day.hxx>
-
-#include <filesystem>
-#include <iostream>
-#include <sstream>
+#include "precompiled.hxx"
 
 Day::Day(int day) : m_day(std::to_string(day)) {
 }

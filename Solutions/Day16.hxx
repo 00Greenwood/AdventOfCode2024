@@ -1,10 +1,4 @@
 #pragma once
-#include <Day.hxx>
-#include <Position.hxx>
-#include <Direction.hxx>
-
-#include <vector>
-#include <map>
 
 class Day16 : public Day {
 public:

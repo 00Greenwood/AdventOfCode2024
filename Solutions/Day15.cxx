@@ -1,10 +1,4 @@
-#include <Day15.hxx>
-#include <parse.hxx>
-
-#include <algorithm>
-
-#include <iostream>
-#include <sstream>
+#include "precompiled.hxx"
 
 Day15::Day15() : Day(15) {
 }

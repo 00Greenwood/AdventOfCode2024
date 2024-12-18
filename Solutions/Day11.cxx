@@ -1,7 +1,4 @@
-#include <Day11.hxx>
-#include <parse.hxx>
-
-#include <map>
+#include "precompiled.hxx"
 
 Day11::Day11() : Day(11) {
 }

@@ -1,9 +1,4 @@
-#include <Days.hxx>
-
-#include <iostream>
-#include <memory>
-#include <mutex>
-#include <vector>
+#include "precompiled.hxx"
 
 int main(int argc, char** argv) {
   auto mutex = std::make_shared<std::mutex>();
