@@ -39,6 +39,8 @@ add_library(Solutions
     Day17.cxx
     Day18.hxx
     Day18.cxx
+    Day19.hxx
+    Day19.cxx
 )
 
 target_precompile_headers(Solutions PRIVATE precompiled.hxx)

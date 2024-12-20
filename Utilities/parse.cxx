@@ -107,3 +107,13 @@ void parse(std::string name, std::vector<std::vector<char>>& output) {
     output.push_back(subOutput);
   }
 }
+
+void parse(std::string name, std::vector<std::string>& output) {
+  std::string input;
+  parse(name, input);
+  std::stringstream ss(input);
+  std::string line;
+  while (std::getline(ss, line, '\n')) {
+    output.push_back(line);
+  }
+}

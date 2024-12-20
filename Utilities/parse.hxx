@@ -20,3 +20,5 @@ void parse(std::string name, std::vector<int64_t>&);
 void parse(std::string name, std::vector<std::vector<size_t>>&);
 
 void parse(std::string name, std::vector<std::vector<char>>&);
+
+void parse(std::string name, std::vector<std::string>&);
