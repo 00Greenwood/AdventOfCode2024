@@ -5,7 +5,7 @@
 
 struct PositionAndDirection {
   Position position;
-  Direction direction;
+  Direction::Type direction;
 
   bool operator==(const PositionAndDirection&) const;
 

@@ -52,7 +52,6 @@ std::string Day14::solve(Part part) const {
 
   // Solution depends heavily on where the christmas tree appears on the canvas.
   std::vector<Robot> robots = m_robots;
-  std::set<Position> locations;
   for (int time = 1; time <= (grid.x * grid.y); time++) {
     std::set<Position> locations;
     for (auto& robot : robots) {

@@ -12,7 +12,7 @@ void Day15::initialize() {
 
 std::string Day15::solve(Part part) const {
   std::map<Position, Tile> warehouse;
-  std::vector<Direction> instructions;
+  std::vector<Direction::Type> instructions;
 
   bool afterBreak = false;
   int y = -1;
@@ -27,16 +27,16 @@ std::string Day15::solve(Part part) const {
       if (afterBreak) {
         switch (ch) {
         case '>':
-          instructions.push_back(RIGHT);
+          instructions.push_back(Direction::RIGHT);
           break;
         case '^':
-          instructions.push_back(UP);
+          instructions.push_back(Direction::UP);
           break;
         case '<':
-          instructions.push_back(LEFT);
+          instructions.push_back(Direction::LEFT);
           break;
         case 'v':
-          instructions.push_back(DOWN);
+          instructions.push_back(Direction::DOWN);
           break;
         }
       } else {
@@ -80,7 +80,7 @@ std::string Day15::solve(Part part) const {
 
   for (const auto instruction : instructions) {
     auto it = std::find_if(warehouse.begin(), warehouse.end(), [](const auto& pair) { return pair.second == ROBOT; });
-    move(it->first, DIRECTIONS[instruction], warehouse);
+    move(it->first, Direction::DIRECTIONS[instruction], warehouse);
   }
 
   int total = 0;
@@ -103,9 +103,10 @@ void Day15::move(const Position& position, const Position& direction, std::map<P
       move(nextPosition, direction, warehouse);
     }
     if (warehouse[nextPosition] == LEFT_BOX || warehouse[nextPosition] == RIGHT_BOX) {
-      if (direction == DIRECTIONS[UP] || direction == DIRECTIONS[DOWN]) {
+      if (direction == Direction::DIRECTIONS[Direction::UP] || direction == Direction::DIRECTIONS[Direction::DOWN]) {
         Position adjacentPosition =
-            nextPosition + (warehouse[nextPosition] == LEFT_BOX ? DIRECTIONS[RIGHT] : DIRECTIONS[LEFT]);
+            nextPosition + (warehouse[nextPosition] == LEFT_BOX ? Direction::DIRECTIONS[Direction::RIGHT]
+                                                                : Direction::DIRECTIONS[Direction::LEFT]);
         move(adjacentPosition, direction, warehouse);
         if (warehouse[adjacentPosition] != SPACE) {
           return;
@@ -137,9 +138,10 @@ bool Day15::canMove(const Position& position, const Position& direction, std::ma
     return canMove(nextPosition, direction, warehouse);
   }
   if (warehouse[nextPosition] == LEFT_BOX || warehouse[nextPosition] == RIGHT_BOX) {
-    if (direction == DIRECTIONS[UP] || direction == DIRECTIONS[DOWN]) {
+    if (direction == Direction::DIRECTIONS[Direction::UP] || direction == Direction::DIRECTIONS[Direction::DOWN]) {
       Position adjacentPosition =
-          nextPosition + (warehouse[nextPosition] == LEFT_BOX ? DIRECTIONS[RIGHT] : DIRECTIONS[LEFT]);
+          nextPosition + (warehouse[nextPosition] == LEFT_BOX ? Direction::DIRECTIONS[Direction::RIGHT]
+                                                              : Direction::DIRECTIONS[Direction::LEFT]);
       return canMove(adjacentPosition, direction, warehouse) && canMove(nextPosition, direction, warehouse);
     } else {
       // Boxes are twice as wide!

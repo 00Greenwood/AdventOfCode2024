@@ -70,7 +70,7 @@ std::string Day17::solve(Part part) const {
 void Day17::run(size_t opcode, size_t operand, Computer& computer) const {
   switch (opcode) {
   case 0:
-    computer.a = computer.a / pow(2, convert(operand, computer));
+    computer.a = static_cast<size_t>(computer.a / pow(2, convert(operand, computer)));
     break;
   case 1:
     computer.b = computer.b ^ operand;
@@ -90,10 +90,10 @@ void Day17::run(size_t opcode, size_t operand, Computer& computer) const {
     computer.output.push_back(convert(operand, computer) % 8);
     break;
   case 6:
-    computer.b = computer.a / pow(2, convert(operand, computer));
+    computer.b = static_cast<size_t>(computer.a / pow(2, convert(operand, computer)));
     break;
   case 7:
-    computer.c = computer.a / pow(2, convert(operand, computer));
+    computer.c = static_cast<size_t>(computer.a / pow(2, convert(operand, computer)));
     break;
   default:
     throw std::runtime_error("Invalid opcode: " + std::to_string(opcode));

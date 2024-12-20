@@ -10,6 +10,6 @@ void Day0::initialize() {
   parse(name(), m_input);
 }
 
-std::string Day0::solve(Part part) const {
+std::string Day0::solve(Part) const {
   return std::to_string(m_input);
 }

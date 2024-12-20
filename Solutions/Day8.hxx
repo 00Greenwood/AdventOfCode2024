@@ -11,6 +11,6 @@ protected:
 
   std::vector<std::vector<char>> m_input;
   std::map<char, std::vector<Position>> m_antenna;
-  int m_width;
-  int m_height;
+  size_t m_width;
+  size_t m_height;
 };

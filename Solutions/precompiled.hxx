@@ -41,3 +41,5 @@
 #include <Day17.hxx>
 #include <Day18.hxx>
 #include <Day19.hxx>
+
+#include <Day20.hxx>

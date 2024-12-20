@@ -10,7 +10,7 @@ void Day5::initialize() {
   std::string input;
   parse(name(), input);
 
-  int index = input.find("\n\n");
+  size_t index = input.find("\n\n");
   std::string orderingsInput = input.substr(0, index);
   std::string manualsInput = input.substr(index + 2);
 
@@ -52,8 +52,8 @@ std::string Day5::solve(Part part) const {
   for (const auto& manual : m_manuals) {
     bool correct = true;
     for (const auto& [first, second] : m_orderings) {
-      auto firstIndex = std::find(manual.begin(), manual.end(), first) - manual.begin();
-      auto secondIndex = std::find(manual.begin(), manual.end(), second) - manual.begin();
+      size_t firstIndex = std::find(manual.begin(), manual.end(), first) - manual.begin();
+      size_t secondIndex = std::find(manual.begin(), manual.end(), second) - manual.begin();
       if (firstIndex != manual.size() && secondIndex != manual.size()) {
         if (firstIndex > secondIndex) {
           correct = false;

@@ -33,7 +33,7 @@ bool Day2::isReportSafe(const std::vector<int>& report) const {
   std::vector<int> errors;
   std::vector<int> increases;
   std::vector<int> decreases;
-  int steps = report.size() - 1;
+  size_t steps = report.size() - 1;
   for (int i = 0; i < steps; ++i) {
     int curr = report.at(i);
     int next = report.at(i + 1);

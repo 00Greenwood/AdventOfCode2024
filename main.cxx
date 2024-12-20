@@ -1,6 +1,6 @@
 #include "precompiled.hxx"
 
-int main(int argc, char** argv) {
+int main(int, char**) {
   auto mutex = std::make_shared<std::mutex>();
 
   std::vector<std::unique_ptr<Day>> days;
@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
   days.push_back(std::make_unique<Day17>());
   days.push_back(std::make_unique<Day18>());
   days.push_back(std::make_unique<Day19>());
+  days.push_back(std::make_unique<Day20>());
 
   for (const auto& day : days) {
     day->solve(mutex);

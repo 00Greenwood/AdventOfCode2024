@@ -19,7 +19,7 @@ void Day10::initialize() {
 }
 
 std::string Day10::solve(Part part) const {
-  int total = 0;
+  size_t total = 0;
   for (const auto& trailhead : m_trailheads) {
     std::set<Position> peaks;
     if (part == PART_1) {
@@ -39,7 +39,7 @@ int Day10::checkTrail(const Position& position, std::set<Position>& peaks) const
     peaks.insert(position);
     return 1;
   }
-  for (const auto& direction : DIRECTIONS) {
+  for (const auto& direction : Direction::DIRECTIONS) {
     Position next = position + direction;
     if (m_map.contains(next)) {
       int nextElevation = m_map.at(next);

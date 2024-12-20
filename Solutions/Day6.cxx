@@ -26,17 +26,17 @@ std::string Day6::solve(Part part) const {
   std::set<Position> positions;
 
   {
-    Direction direction = UP;
+    Direction::Type direction = Direction::UP;
     Position current = m_start;
     while (inBounds(current)) {
       if (m_walls.contains(current)) {
         // Hit a wall, move back one space, rotate and continue.
-        current -= DIRECTIONS[direction];
-        direction = static_cast<Direction>((direction + 1) % 4);
+        current -= Direction::DIRECTIONS[direction];
+        direction = static_cast<Direction::Type>((direction + 1) % 4);
       } else {
         positions.insert(current);
       }
-      current += DIRECTIONS[direction];
+      current += Direction::DIRECTIONS[direction];
     }
   }
 
@@ -64,12 +64,12 @@ std::string Day6::solve(Part part) const {
 
       if (m_walls.contains(current) || current == position) {
         // Hit a wall, move back one space, rotate and continue.
-        current -= DIRECTIONS[direction];
-        direction = static_cast<Direction>((direction + 1) % 4);
+        current -= Direction::DIRECTIONS[direction];
+        direction = static_cast<Direction::Type>((direction + 1) % 4);
       } else {
         walkLength++;
       }
-      current += DIRECTIONS[direction];
+      current += Direction::DIRECTIONS[direction];
     }
   }
 

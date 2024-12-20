@@ -43,8 +43,8 @@ bool Day7::validEquation(const std::vector<size_t>& equation, int index, size_t 
 
   if (part == PART_2) {
     // We need to account for 100 giving us 2 instead of 3, so we add 1.
-    int exponent = std::ceil(std::log10(equation.at(index) + 1));
-    size_t concat = total * std::pow(10, exponent) + equation.at(index);
+    size_t exponent = static_cast<size_t>(std::ceil(std::log10(equation.at(index) + 1)));
+    size_t concat = total * static_cast<size_t>(std::pow(10, exponent)) + equation.at(index);
     if (concat <= equation.at(0)) {
       if (validEquation(equation, index + 1, concat, part)) {
         return true;

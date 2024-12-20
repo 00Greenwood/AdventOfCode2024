@@ -41,9 +41,17 @@ add_library(Solutions
     Day18.cxx
     Day19.hxx
     Day19.cxx
+    Day20.hxx
+    Day20.cxx
 )
 
 target_precompile_headers(Solutions PRIVATE precompiled.hxx)
+
+target_compile_options(Solutions PRIVATE
+     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+          -Werror -Wall -pedantic-errors -Wextra -Wconversion -Wsign-conversion>
+     $<$<CXX_COMPILER_ID:MSVC>:
+          /WX /W4>)
 
 target_include_directories(Solutions PRIVATE     
     "${PROJECT_SOURCE_DIR}/Solutions"

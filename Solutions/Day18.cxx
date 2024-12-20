@@ -14,10 +14,10 @@ void Day18::initialize() {
 }
 
 std::string Day18::solve(Part part) const {
-  int time = 1024;
+  size_t time = 1024;
   Position end = Position(70, 70);
-  int lower = 0;
-  int upper = m_bytes.size();
+  size_t lower = 0;
+  size_t upper = m_bytes.size();
 
   while (true) {
     std::set<Position> corrupted;
@@ -40,7 +40,7 @@ std::string Day18::solve(Part part) const {
         continue;
       }
 
-      for (const auto& direction : DIRECTIONS) {
+      for (const auto& direction : Direction::DIRECTIONS) {
         Position next = current + direction;
         if (next.x < 0 || next.x > end.x || next.y < 0 || next.y > end.y) {
           continue;
@@ -77,7 +77,7 @@ std::string Day18::solve(Part part) const {
       // Too low!
       lower = time;
     }
-    time = (upper + lower) / 2;
+    time = static_cast<size_t>((upper + lower) / 2);
   }
 
   throw std::runtime_error("No solution found!");

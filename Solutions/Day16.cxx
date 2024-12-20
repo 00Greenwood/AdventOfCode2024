@@ -36,14 +36,14 @@ void Day16::initialize() {
 
 std::string Day16::solve(Part part) const {
   std::map<PositionAndDirection, int> scores;
-  scores.emplace(PositionAndDirection(m_start, RIGHT), 0);
+  scores.emplace(PositionAndDirection(m_start, Direction::RIGHT), 0);
 
   {
     std::queue<PositionAndDirection> queue;
-    queue.push(PositionAndDirection(m_start, RIGHT));
+    queue.push(PositionAndDirection(m_start, Direction::RIGHT));
 
-    auto move = [this, &scores, &queue](const Position& position, Direction direction, int score) {
-      PositionAndDirection nextPad(position + DIRECTIONS[direction], direction);
+    auto move = [this, &scores, &queue](const Position& position, Direction::Type direction, int score) {
+      PositionAndDirection nextPad(position + Direction::DIRECTIONS[direction], direction);
       if (m_maze.at(nextPad.position) != WALL) {
         if (!scores.contains(nextPad)) {
           scores[nextPad] = score;
@@ -67,10 +67,10 @@ std::string Day16::solve(Part part) const {
         move(pad.position, pad.direction, score + 1);
       }
       { // Clockwise
-        move(pad.position, turn90(pad.direction), score + 1001);
+        move(pad.position, Direction::turn90(pad.direction), score + 1001);
       }
       { // Counterclockwise
-        move(pad.position, turn270(pad.direction), score + 1001);
+        move(pad.position, Direction::turn270(pad.direction), score + 1001);
       }
     }
   }
@@ -99,9 +99,10 @@ std::string Day16::solve(Part part) const {
     queue.pop();
     path.insert(pad.position);
     int score = scores.at(pad);
-    for (const auto& direction : DIRECTIONS) {
-      for (const auto& incomingDirection : DIRECTIONS) {
-        PositionAndDirection nextPad(pad.position - direction, REVERSE_DIRECTIONS[incomingDirection]);
+    for (const auto& direction : Direction::DIRECTIONS) {
+      for (const auto& incomingDirection : Direction::DIRECTIONS) {
+        Direction::Type reverseDirection = Direction::REVERSE_DIRECTIONS.at(incomingDirection);
+        PositionAndDirection nextPad(pad.position - direction, reverseDirection);
         if (scores.contains(nextPad) && (scores.at(nextPad) == score - 1 || scores.at(nextPad) == score - 1001)) {
           queue.push(nextPad);
         }
