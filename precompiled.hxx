@@ -26,3 +26,4 @@
 
 #include <Day20.hxx>
 #include <Day21.hxx>
+#include <Day22.hxx>

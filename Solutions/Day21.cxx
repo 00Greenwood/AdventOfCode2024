@@ -42,7 +42,7 @@ void Day21::initialize() {
   m_directionKeypad['>'] = Position(2, 1);
 }
 
-std::string Day21::solve(Part part) const {
+std::string Day21::solve(Part) const {
   // std::map<std::string, std::string> outputs;
   // for (const auto& input : m_input) {
   //   outputs[input] = input;
