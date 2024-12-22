@@ -1,4 +1,5 @@
 #include "precompiled.hxx"
+#include <Day16.hxx>
 
 Day16::Day16() : Day(16) {
 }

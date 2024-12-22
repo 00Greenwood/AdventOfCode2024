@@ -1,7 +1,7 @@
 #include "precompiled.hxx"
+#include <Day12.hxx>
 
 namespace {
-
 struct Group {
   std::set<Position> positions;
 };

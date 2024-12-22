@@ -1,4 +1,5 @@
 #include "precompiled.hxx"
+#include <Day6.hxx>
 
 Day6::Day6() : Day(6) {
 }

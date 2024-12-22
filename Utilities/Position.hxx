@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 struct Position {
   int x;
   int y;
