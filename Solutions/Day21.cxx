@@ -42,28 +42,28 @@ void Day21::initialize() {
   m_directionKeypad['>'] = Position(2, 1);
 }
 
-std::string Day21::solve(Part) const {
-  // std::map<std::string, std::string> outputs;
-  // for (const auto& input : m_input) {
-  //   outputs[input] = input;
-  // }
+std::string Day21::solve(Part part) const {
+  std::map<std::string, std::string> outputs;
+  for (const auto& input : m_input) {
+    outputs[input] = input;
+  }
 
-  // Cache cache;
+  Cache cache;
 
-  // size_t robots = part == PART_1 ? 1 : 1;
+  size_t robots = part == PART_1 ? 3 : 5;
 
-  // for (const auto& input : m_input) {
-  //   for (int i = 0; i < robots; i++) {
-  //     outputs[input] = move('A' + outputs[input], cache);
-  //   }
-  // }
+  for (const auto& input : m_input) {
+    for (int i = 0; i < robots; i++) {
+      outputs[input] = move('A' + outputs[input], cache);
+    }
+  }
 
   size_t total = 0;
-  // for (const auto& [input, moves] : outputs) {
-  //   std::string number = input.substr(0, input.size() - 1);
-  //   size_t length = moves.size();
-  //   total += length * std::stoi(number);
-  // }
+  for (const auto& [input, moves] : outputs) {
+    std::string number = input.substr(0, input.size() - 1);
+    size_t length = moves.size();
+    total += length * std::stoi(number);
+  }
 
   return std::to_string(total);
 }
@@ -120,7 +120,11 @@ std::string Day21::move(char start, char end) const {
     return turns;
   };
 
-  auto isValidMove = [](const std::string& move, const std::map<char, Position>& keypad, Position position) -> bool {
+  auto isValidMove = [&countTurns](const std::string& move, const std::map<char, Position>& keypad,
+                                   Position position) -> bool {
+    if (countTurns(move) > 1) {
+      return false;
+    }
     for (const auto& direction : move) {
       if (direction == '>') {
         position.x++;
@@ -141,19 +145,12 @@ std::string Day21::move(char start, char end) const {
   };
 
   std::set<std::string> outputs;
-  size_t leastTurns = std::numeric_limits<size_t>::max();
   // Find all possible solutions.
   std::sort(movement.begin(), movement.end());
   do {
     Position position = keypad.at(start);
     if (isValidMove(movement, keypad, position)) {
-      if (countTurns(movement) <= leastTurns) {
-        if (countTurns(movement) < leastTurns) {
-          outputs.clear();
-        }
-        leastTurns = countTurns(movement);
-        outputs.insert(movement + 'A');
-      }
+      outputs.insert(movement + 'A');
     }
   } while (std::next_permutation(movement.begin(), movement.end()));
 
