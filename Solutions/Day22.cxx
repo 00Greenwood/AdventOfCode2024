@@ -17,9 +17,10 @@ std::string Day22::solve(Part part) const {
     secrets[secret] = secret;
   }
 
-  std::unordered_map<std::string, std::unordered_map<size_t, int>> orders;
+  std::unordered_map<std::string, size_t> totalOrders;
 
   for (auto& [key, secret] : secrets) {
+    std::unordered_map<std::string, int> orders;
     std::deque<int> prices;
     for (size_t i = 0; i < 2000; i++) {
       secret = convert(secret);
@@ -28,11 +29,16 @@ std::string Day22::solve(Part part) const {
         // Only strore the last 5 prices and use them to create a key for the order.
         if (prices.size() == 5) {
           std::string order = hash(prices);
-          int& current = orders[order][key];
-          current = std::max(current, prices.back());
+          if (!orders.contains(order)) {
+            orders[order] = prices.back();
+          }
           prices.pop_front();
         }
       }
+    }
+
+    for (const auto& [order, price] : orders) {
+      totalOrders[order] += price;
     }
   }
 
@@ -42,12 +48,8 @@ std::string Day22::solve(Part part) const {
       total += secret;
     }
   } else {
-    for (const auto& order : orders) {
-      size_t totalBought = 0;
-      for (const auto& [key, price] : order.second) {
-        totalBought += price;
-      }
-      total = std::max(total, totalBought);
+    for (const auto& [order, price] : totalOrders) {
+      total = std::max(total, price);
     }
   }
 
