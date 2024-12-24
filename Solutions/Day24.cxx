@@ -55,16 +55,53 @@ std::string Day24::solve(Part part) const {
     return std::to_string(total);
   }
 
-  std::set<std::string> swappable;
-  for (const auto& [output, gate] : m_gates) {
-    if (!gate.inputOne.empty()) {
-      swappable.insert(gate.output);
-    }
+  std::map<std::string, Gate> gates = m_gates;
+  std::set<std::pair<std::string, std::string>> swaps;
+  swaps.insert({"z35", "hqk"});
+  swaps.insert({"z06", "fhc"});
+  swaps.insert({"z11", "qhj"});
+  swaps.insert({"ggt", "mwh"});
+
+  for (const auto& [first, second] : swaps) {
+    std::string swap = first;
+    gates[second].output = first;
+    gates[swap].output = second;
   }
 
-  std::map<std::string, Gate> gates = m_gates;
+  std::ofstream out("Day24.gv");
+  out << "digraph Day24 {\n";
 
-  return "";
+  for (const auto& [_, gate] : gates) {
+    out << "\t" << gate.output << " [label=" << gate.output << "]\n";
+    switch (gate.operation) {
+    case AND:
+      out << "\t" << gate.inputOne << " -> " << gate.output << " [label=AND]\n";
+      out << "\t" << gate.inputTwo << " -> " << gate.output << " [label=AND]\n";
+      break;
+    case OR:
+      out << "\t" << gate.inputOne << " -> " << gate.output << " [label=OR]\n";
+      out << "\t" << gate.inputTwo << " -> " << gate.output << " [label=OR]\n";
+      break;
+    case XOR:
+      out << "\t" << gate.inputOne << " -> " << gate.output << " [label=XOR]\n";
+      out << "\t" << gate.inputTwo << " -> " << gate.output << " [label=XOR]\n";
+      break;
+    }
+  }
+  out << "}\n";
+
+  std::set<std::string> swapped;
+  for (const auto& [first, second] : swaps) {
+    swapped.insert(first);
+    swapped.insert(second);
+  }
+
+  std::stringstream ss;
+  for (const auto& swap : swapped) {
+    ss << swap << ",";
+  }
+
+  return ss.str();
 }
 
 bool Day24::run(const Gate& gate, std::map<std::string, bool>& outputs) const {
