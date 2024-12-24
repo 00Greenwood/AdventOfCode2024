@@ -17,7 +17,7 @@ protected:
 
   size_t convert(size_t number) const;
 
-  std::string hash(const std::deque<int>& numbers) const;
+  void updateKey(std::string& output, int number) const;
 
   std::list<size_t> m_input;
 };

@@ -50,12 +50,10 @@ std::string Day21::solve(Part part) const {
 
   Cache cache;
 
-  size_t robots = part == PART_1 ? 3 : 5;
+  size_t robots = part == PART_1 ? 3 : 25;
 
   for (const auto& input : m_input) {
-    for (int i = 0; i < robots; i++) {
-      outputs[input] = move('A' + outputs[input], cache);
-    }
+    outputs[input] = move(robots, 'A' + outputs[input], cache);
   }
 
   size_t total = 0;
@@ -68,28 +66,32 @@ std::string Day21::solve(Part part) const {
   return std::to_string(total);
 }
 
-std::string Day21::move(const std::string& input, Cache& cache) const {
-  if (cache.contains(input)) {
-    return cache.at(input);
+std::string Day21::move(size_t depth, const std::string& input, Cache& cache) const {
+  if (cache[depth].contains(input)) {
+    return cache[depth][input];
   }
 
   std::string output;
 
-  if (input.size() == 2) {
-    output = move(input[0], input[1]);
-  } else {
-    std::string first = input.substr(0, 2);
-    std::string second = input.substr(1);
-    output = move(first, cache) + move(second, cache);
-  }
+  // if (depth > 1) {
+  //   output = move(depth - 1, input, cache);
+  // }
 
-  cache.insert_or_assign(input, output);
-  return cache.at(input);
+  // if (input.size() == 2) {
+  //   output = move(input[0], input[1]);
+  // } else {
+  //   std::string first = input.substr(0, 2);
+  //   std::string second = input.substr(1);
+  //   output = move(first, cache) + move(second, cache);
+  // }
+
+  cache[depth][input] = output;
+  return cache[depth][input];
 }
 
-std::string Day21::move(char start, char end) const {
+std::set<std::string> Day21::move(char start, char end) const {
   if (start == end) {
-    return "A";
+    return {"A"};
   }
   std::map<char, Position> keypad = m_numberKeypad;
   if (start == '<' || end == '<' || start == '^' || end == '^' || start == '>' || end == '>' || start == 'v' ||
@@ -154,5 +156,5 @@ std::string Day21::move(char start, char end) const {
     }
   } while (std::next_permutation(movement.begin(), movement.end()));
 
-  return *outputs.begin();
+  return outputs;
 }

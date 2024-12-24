@@ -19,21 +19,22 @@ std::string Day22::solve(Part part) const {
 
   std::unordered_map<std::string, size_t> totalOrders;
 
-  for (auto& [key, secret] : secrets) {
+  for (auto& [monkeyKey, secret] : secrets) {
     std::unordered_map<std::string, int> orders;
-    std::deque<int> prices;
+    std::optional<int> previous;
+    std::string orderKey;
     for (size_t i = 0; i < 2000; i++) {
       secret = convert(secret);
       if (part == PART_2) {
-        prices.push_back(secret % 10);
+        int price = secret % 10;
         // Only strore the last 5 prices and use them to create a key for the order.
-        if (prices.size() == 5) {
-          std::string order = hash(prices);
-          if (!orders.contains(order)) {
-            orders[order] = prices.back();
-          }
-          prices.pop_front();
+        if (previous) {
+          updateKey(orderKey, price - *previous);
         }
+        if (orderKey.size() == 8 && !orders.contains(orderKey)) {
+          orders[orderKey] = price;
+        }
+        previous = price;
       }
     }
 
@@ -75,19 +76,15 @@ size_t Day22::convert(size_t number) const {
   return prune(mix(number, number * 2048));
 }
 
-std::string Day22::hash(const std::deque<int>& numbers) const {
-  std::string output;
-  std::optional<int> previous;
-  for (const auto& number : numbers) {
-    if (previous) {
-      int change = (number - *previous);
-      if (change < 0) {
-        output += '-';
-      }
-      char ch = '0' + static_cast<char>(abs(change));
-      output += ch;
-    }
-    previous = number;
+void Day22::updateKey(std::string& output, int number) const {
+  if (output.size() > 6) {
+    output = output.substr(2);
   }
-  return output;
+  if (number < 0) {
+    output += '-';
+  } else {
+    output += '+';
+  }
+  char ch = '0' + static_cast<char>(abs(number));
+  output += ch;
 }

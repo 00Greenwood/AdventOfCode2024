@@ -9,10 +9,10 @@ protected:
   void initialize() override;
   std::string solve(Part) const override;
 
-  using Cache = std::map<std::string, std::string>;
+  using Cache = std::map<size_t, std::map<std::string, std::string>>;
 
-  std::string move(const std::string& input, Cache& cache) const;
-  std::string move(char start, char end) const;
+  std::string move(size_t depth, const std::string& input, Cache& cache) const;
+  std::set<std::string> move(char start, char end) const;
 
   std::vector<std::string> m_input;
 
