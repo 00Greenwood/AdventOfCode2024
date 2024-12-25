@@ -43,53 +43,52 @@ void Day21::initialize() {
 }
 
 std::string Day21::solve(Part part) const {
-  std::map<std::string, std::string> outputs;
+  Cache cache;
   for (const auto& input : m_input) {
-    outputs[input] = input;
+    populate(input, cache);
   }
 
-  Cache cache;
-
-  size_t robots = part == PART_1 ? 3 : 25;
-
+  DepthCache depthCache;
+  std::map<std::string, size_t> output;
+  size_t robots = part == PART_1 ? 3 : 26;
   for (const auto& input : m_input) {
-    outputs[input] = move(robots, 'A' + outputs[input], cache);
+    output[input] = move(input, cache, robots, depthCache);
   }
 
   size_t total = 0;
-  for (const auto& [input, moves] : outputs) {
+  for (const auto& [input, length] : output) {
     std::string number = input.substr(0, input.size() - 1);
-    size_t length = moves.size();
     total += length * std::stoi(number);
   }
 
   return std::to_string(total);
 }
 
-std::string Day21::move(size_t depth, const std::string& input, Cache& cache) const {
-  if (cache[depth].contains(input)) {
-    return cache[depth][input];
+void Day21::populate(const std::string& input, Cache& cache) const {
+  if (cache.contains(input)) {
+    return;
   }
 
-  std::string output;
+  // The move always start with the hand hovering over A.
+  const std::string inputWithOrigin = 'A' + input;
 
-  // if (depth > 1) {
-  //   output = move(depth - 1, input, cache);
-  // }
+  PossibleMoves moves;
 
-  // if (input.size() == 2) {
-  //   output = move(input[0], input[1]);
-  // } else {
-  //   std::string first = input.substr(0, 2);
-  //   std::string second = input.substr(1);
-  //   output = move(first, cache) + move(second, cache);
-  // }
+  for (size_t i = 0; i < inputWithOrigin.size() - 1; i++) {
+    PossibleMove output = move(inputWithOrigin[i], inputWithOrigin[i + 1]);
+    moves.push_back(output);
+  }
 
-  cache[depth][input] = output;
-  return cache[depth][input];
+  cache.insert_or_assign(input, moves);
+
+  for (const auto& move : moves) {
+    for (const auto& steps : move) {
+      populate(steps, cache);
+    }
+  }
 }
 
-std::set<std::string> Day21::move(char start, char end) const {
+Day21::PossibleMove Day21::move(char start, char end) const {
   if (start == end) {
     return {"A"};
   }
@@ -146,15 +145,38 @@ std::set<std::string> Day21::move(char start, char end) const {
     return true;
   };
 
-  std::set<std::string> outputs;
+  PossibleMove outputs;
   // Find all possible solutions.
   std::sort(movement.begin(), movement.end());
   do {
     Position position = keypad.at(start);
     if (isValidMove(movement, keypad, position)) {
-      outputs.insert(movement + 'A');
+      outputs.push_back(movement + 'A');
     }
   } while (std::next_permutation(movement.begin(), movement.end()));
 
   return outputs;
+}
+
+size_t Day21::move(const std::string& input, const Cache& cache, size_t depth, DepthCache& depthCache) const {
+  if (depthCache.contains(depth)) {
+    if (depthCache.at(depth).contains(input)) {
+      return depthCache.at(depth).at(input);
+    }
+  }
+
+  PossibleMoves moves = cache.at(input);
+
+  for (const auto& possibleMove : moves) {
+    size_t minimum = std::numeric_limits<size_t>::max();
+    for (const auto& steps : possibleMove) {
+      size_t possibleMinimum = steps.size();
+      if (depth != 1) {
+        possibleMinimum = move(steps, cache, depth - 1, depthCache);
+      }
+      minimum = std::min(minimum, possibleMinimum);
+    }
+    depthCache[depth][input] += minimum;
+  }
+  return depthCache[depth][input];
 }

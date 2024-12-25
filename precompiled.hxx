@@ -29,3 +29,4 @@
 #include <Day22.hxx>
 #include <Day23.hxx>
 #include <Day24.hxx>
+#include <Day25.hxx>
